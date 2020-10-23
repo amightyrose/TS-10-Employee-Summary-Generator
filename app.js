@@ -5,6 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const util = require("util");
 const userDialogs = require('./lib/userDialogs')
+const getEmployees = require('./lib/getEmployees')
 const render = require("./lib/htmlRenderer");
 // const generateMarkdown = require('./lib/generateMarkdown');
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -21,11 +22,14 @@ async function init() {
 
 		userDialogs.showWelcome();
 
-		if (!(await userDialogs.continuePrompt()).continue) {return};
+		if (!(await userDialogs.continuePrompt())) {return};
 
 		const arrEmployees = await userDialogs.getEmployeeDetails();
 
 		console.log(arrEmployees);
+
+		const addmore = await userDialogs.addEmployee();
+		console.log(addmore);
 
 		// const markup = generateMarkdown(answers);
 

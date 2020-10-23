@@ -3,6 +3,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const path = require("path");
 const fs = require("fs");
+const util = require("util");
 const userDialogs = require('./lib/userDialogs')
 const promptUser = require('./lib/promptUser');
 const render = require("./lib/htmlRenderer");

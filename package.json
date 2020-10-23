@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --verbose ./test/*"
+    "test": "jest --verbose ./test/*",
+    "start": "app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/timsilby/TS-10-Employee-Summary-Generator#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "inquirer": "^7.3.3"
   },
   "devDependencies": {

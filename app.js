@@ -2,7 +2,7 @@
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
-const userDialogs = require('./lib/userDialogs')
+const { promptContinue, showHTML, showSuccessMsg } = require("./lib/userDialogs")
 const getEmployees = require('./lib/getEmployees')
 const render = require("./lib/htmlRenderer");
 
@@ -18,9 +18,9 @@ async function init() {
 
 	try {
 
-		userDialogs.showWelcome();
+		showWelcome();
 
-		if (!(await userDialogs.promptContinue())) {return};
+		if (!(await promptContinue())) {return};
 
 		//
 		const arrEmployees = await getEmployees();
@@ -29,13 +29,24 @@ async function init() {
 		console.log(arrEmployees);
 
 		const html = render(arrEmployees);
-		userDialogs.showHTML(html);
+		showHTML(html);
 
-		if (!(await userDialogs.promptContinue())) {return};
+		if (!(await promptContinue())) {return};
 
-		// await writeFileAsync(outputPath, html);
+		// Check if the output directory exists and create it if necessary.
+		console.log("\nChecking output directory...");
 
-		// userDialogs.showSuccessMsg();
+		if (!fs.existsSync(outputPath)) {
+
+			console.log("\nCreating output directory...");
+			fs.mkdirSync(OUTPUT_DIR);
+
+		}
+
+		console.log("\nWriting output file...");
+		await writeFileAsync(outputPath, html);
+
+		showSuccessMsg();
 
 	}
 	catch(err) {

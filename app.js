@@ -11,6 +11,9 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 
+
+// Main application function.
+
 async function init() {
 
 	try {

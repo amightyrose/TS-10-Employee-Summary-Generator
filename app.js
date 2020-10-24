@@ -1,14 +1,11 @@
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
+// Declare some variables.
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
 const userDialogs = require('./lib/userDialogs')
 const getEmployees = require('./lib/getEmployees')
 const render = require("./lib/htmlRenderer");
-const { getEmployeeDetails } = require("./lib/userDialogs");
-// const generateMarkdown = require('./lib/generateMarkdown');
+
 const writeFileAsync = util.promisify(fs.writeFile);
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -25,19 +22,18 @@ async function init() {
 
 		if (!(await userDialogs.promptContinue())) {return};
 
-		// const arrEmployees = await userDialogs.getEmployeeDetails();
+		//
 		const arrEmployees = await getEmployees();
 
 		console.log("returned");
 		console.log(arrEmployees);
 
-		// const markup = generateMarkdown(answers);
+		const html = render(arrEmployees);
+		userDialogs.showHTML(html);
 
-		// userDialogs.previewMD(md);
+		if (!(await userDialogs.promptContinue())) {return};
 
-		// if (!(await userDialogs.continuePrompt()).continue) {return};
-
-		// await writeFileAsync("./output/README.md", md)
+		// await writeFileAsync(outputPath, html);
 
 		// userDialogs.showSuccessMsg();
 

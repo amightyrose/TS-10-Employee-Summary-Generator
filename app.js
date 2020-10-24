@@ -2,7 +2,7 @@
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
-const { promptContinue, showHTML, showSuccessMsg } = require("./lib/userDialogs")
+const { showWelcome, promptContinue, showHTML, showSuccessMsg, showCurrentOpMsg } = require("./lib/userDialogs")
 const getEmployees = require('./lib/getEmployees')
 const render = require("./lib/htmlRenderer");
 
@@ -11,42 +11,51 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 
-
-
-
 async function init() {
 
 	try {
 
+
+		// Display the welcome header and message.
 		showWelcome();
 
+
+		// Ask the user if they want to continue. If not, exit.
 		if (!(await promptContinue())) {return};
 
-		//
+
+		// Call getEmployees to create the employees array.
 		const arrEmployees = await getEmployees();
 
-		console.log("returned");
-		console.log(arrEmployees);
 
+		// Call render with the employee array to render the html. Preview the html in the console.
 		const html = render(arrEmployees);
 		showHTML(html);
 
+
+		// Ask the user again if they want to continue.
 		if (!(await promptContinue())) {return};
 
+
 		// Check if the output directory exists and create it if necessary.
-		console.log("\nChecking output directory...");
+		showCurrentOpMsg("\nChecking output directory...");
 
 		if (!fs.existsSync(outputPath)) {
 
-			console.log("\nCreating output directory...");
+			showCurrentOpMsg("\nCreating output directory...");
 			fs.mkdirSync(OUTPUT_DIR);
 
 		}
 
-		console.log("\nWriting output file...");
+
+		// Write the output file.
+		showCurrentOpMsg("\nWriting output file...");
 		await writeFileAsync(outputPath, html);
 
+
+		// Display the "file written" message.
 		showSuccessMsg();
+
 
 	}
 	catch(err) {
@@ -59,30 +68,3 @@ async function init() {
 
 
 init();
-
-
-
-
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```

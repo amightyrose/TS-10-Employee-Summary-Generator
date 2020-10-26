@@ -1,4 +1,4 @@
-# TS-10-Employee-Summary-Generator
+# Employee Summary Generator
 
 
 ![esg-output](https://user-images.githubusercontent.com/69242373/97165283-303e7200-17cf-11eb-9f76-72d274e14f37.png)

@@ -33,6 +33,7 @@ async function init() {
 
 		// Call render with the employee array to render the html. Preview the html in the console.
 		const html = render(arrEmployees);
+
 		showHTML(html);
 
 

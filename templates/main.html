@@ -1,32 +1,62 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My Team</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<title>My Team</title>
+
+
+	<!-- Links to css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/superhero/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+    <style>
+        body {
+	        background-color: #2b3e50;
+        }
+
+        .employee-title, .employee-info {
+            line-height: 1;
+            margin: 0;
+        }
+
+        p {
+            margin-bottom: .5rem;
+        }
+    </style>
+
 </head>
 
+
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 jumbotron mb-3 team-heading">
-                <h1 class="text-center">My Team</h1>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="team-area col-12 d-flex justify-content-center">
-                {{ team }}
-            </div>
-        </div>
-    </div>
+
+
+	<!-- Header row -->
+	<header class="navbar navbar-dark bg-primary mb-4">
+
+		<div class="container">
+			<h1 class="navbar-brand">My Team</h1>
+		</div>
+
+	</header>
+
+
+	<!-- Main page content -->
+	<main class="container text-white">
+
+            {{ team }}
+
+	</main>
+
+
 </body>
+
 
 </html>

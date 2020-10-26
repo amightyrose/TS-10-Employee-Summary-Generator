@@ -1,7 +1,7 @@
 # TS-10-Employee-Summary-Generator
 
 
-![esg-preview](https://user-images.githubusercontent.com/69242373/97165287-316f9f00-17cf-11eb-9bf9-d90fe44bcd14.png)
+![esg-output](https://user-images.githubusercontent.com/69242373/97165283-303e7200-17cf-11eb-9f76-72d274e14f37.png)
 
 
 ## Description
@@ -48,7 +48,7 @@ Watch this walkthrough video to see how it works.
 ## Examples
 If you'd like to see an example of a generated employee summary, here's one we created earlier:
 
-[Sample README.md file](./sample-output/team.html)
+[Sample employee summary](./sample-output/team.html)
 
 
 ## Questions
